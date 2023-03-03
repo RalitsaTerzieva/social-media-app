@@ -9,7 +9,6 @@
        <div class='grid grid-cols-1 mx-60 p-10'>
         {% for post in posts %}
             <a href=''>
-                
                 <div class='rounded overflow-hidden w-[470px] h-[470px] bg-white shadow-lg'>
                 <div class='user-container flex mb-5'>
                     <img class='w-10 h-10' src="{{ post.user.profile.photo.url }}">
@@ -42,6 +41,25 @@
                 <div class='px-6 py-4'>
                     <div class='font-bold text-xl mb-2'>{{ post.title }}</div>
                     <p class='text-gray-700 text-base'>{{ post.caption }}</p>
+                </div>
+                <div class='px-5 py-5'>
+                    {% for comment in post.comments.all %}
+                    <b>{{ comment.posted_by }}</b>: {{ comment.body }} 
+                    <a class='bg-red-500 text-white px-2 py-1' type="sybmit" href="{% url 'delete' comment.pk %}">Delete</a> <br/>
+                    <br/>
+                    {% endfor %}
+                </div>
+                <div class='px-5 py-5'>
+                    <form method='POST' class='bg-white rounded'>
+                       {% csrf_token %}
+                       <div class='border rounded mr-3 text-gray-700'>
+                            {{comment_form.body }}
+                       </div>
+                        <input type='hidden' name='post_id' id='post_id' value='{{ post.id }}'>
+                        <input type='hidden' name='posted_by' id='posted_by' value='{{ logged_user }}'>
+                        <button type='submit' class='bg-green-500 text-white px-5 py-2 mt-6'>Add</button>
+                       
+                    </form>
                 </div>
             </a>
         {% endfor %}
