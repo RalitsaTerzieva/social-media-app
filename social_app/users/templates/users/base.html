@@ -24,11 +24,13 @@
                     </div>
                     <div class='space-x-1'>
                         {% if request.user.is_authenticated %}
+                        Welcome, {{ logged_user }}!
                         <a class='py-4 px-2 text-gray-500 font-semibold text-lg' href='{% url "logout" %}'>Logout</a>
                         {% else %}
+                        <a class='py-4 px-2 text-gray-500 font-semibold text-lg' href='{% url "register" %}'>Register</a>
                         <a class='py-4 px-2 text-gray-500 font-semibold text-lg' href='{% url "login" %}'>Login</a>
                         {% endif %}
-                        <a class='py-4 px-2 text-gray-500 font-semibold text-lg' href=''>Link3</a>
+                        <a class='py-4 px-2 text-gray-500 font-semibold text-lg' href='{% url "feed" %}'>Posts</a>
                     </div>
                 </div>
             </div>
