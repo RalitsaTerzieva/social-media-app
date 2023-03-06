@@ -8,7 +8,7 @@ There are functionalities like:
 
     * like ❤️
     * comment ✏️
-    * share ✉️
+    * share ✉️ --> still not created - it is only an image
 
 
 ## Installation
