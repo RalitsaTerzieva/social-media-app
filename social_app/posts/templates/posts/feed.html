@@ -1,4 +1,5 @@
 {% extends 'users/base.html' %}
+{% load mathfilters %}
 {% load static %}
 
 {% block content %}
@@ -19,11 +20,24 @@
                 <div class='px-6 py-4'>
                     <div class='icon-container flex gap-3'>
                         <a id='{{ post.id }}' class='btn-like'>
-                            <img class='w-10 h-10' src='{% static "images/heart.jpg" %}'>
+                            {% if logged_user in post.liked_by.all %}
+                                <img class='w-10 h-10' src='{% static "images/heart.jpg" %}'>
+                            {% else %}
+                                <img class='w-10 h-10' src='{% static "images/whiteheart.png" %}'>
+                            {% endif %}
                         </a>
                         <img class='w-10 h-10' src='{% static "images/comment2.png" %}'>
                         <img class='w-10 h-10' src='{% static "images/share3.png" %}'>
                     </div>
+                </div>
+                <div>
+                    {% if post.liked_by.count < 1 %}
+
+                    {% elif post.liked_by.count == 1 %}
+                    {{ post.liked_by.first }} likes this!
+                    {% elif post.liked_by.count > 1 %}
+                    {{ post.liked_by.first }} & {{ post.liked_by.count|sub:1 }} like this!
+                    {% endif %}
                 </div>
                 <div class='px-6 py-4'>
                     <div class='font-bold text-xl mb-2'>{{ post.title }}</div>
@@ -39,8 +53,9 @@
                 $.ajax({
                     method:'POST',
                     url:'/posts/like/',
-                    data:{post_id:post_id,csrfmiddlewaretoken:window.CSRF_token}
+                    data:{post_id:post_id, csrfmiddlewaretoken:window.CSRF_token}
                 })
+                window.location.href = "http://localhost:8000/posts/feed/"
             })
         </script>
 {% endblock %}
