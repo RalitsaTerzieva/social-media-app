@@ -6,9 +6,10 @@ You can use this custom simple Django based Social Media application to learn ho
 
 There are functionalities like:
 
-    * like ❤️;
-    * comment ✏️;
-    * share ✉️;
+    * like ❤️
+    * comment ✏️
+    * share ✉️
+
 
 ## Installation
 
