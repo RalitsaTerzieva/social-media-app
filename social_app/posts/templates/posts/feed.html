@@ -18,7 +18,9 @@
                 </div>
                 <div class='px-6 py-4'>
                     <div class='icon-container flex gap-3'>
-                        <img class='w-10 h-10' src='{% static "images/heart.jpg" %}'>
+                        <a id='{{ post.id }}' class='btn-like'>
+                            <img class='w-10 h-10' src='{% static "images/heart.jpg" %}'>
+                        </a>
                         <img class='w-10 h-10' src='{% static "images/comment2.png" %}'>
                         <img class='w-10 h-10' src='{% static "images/share3.png" %}'>
                     </div>
