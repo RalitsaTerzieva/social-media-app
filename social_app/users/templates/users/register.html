@@ -1,11 +1,39 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-    <form  method="POST">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        <button type="submit">Register</button>
-    </form>
+    <h1 class='text-2xl m-10'>👨Register User</h1>
+    <div class='container py-2'>
+        <form  method="POST" class="bg-white shadow-md m-5 w-2/5 rounded px-8 pt-1 pb-8 mb-4">
+            {% csrf_token %}
+            <div class='mb-3'>
+                <label class='block text-gray-700 text-sm font-bold m-2'>Email</label>
+                <div class='shadow appearance-none border rounded text-gray-700 py-2 px-3 mr-10'>{{ user_form.email }}</div>
+            </div>
+            <div class='mb-3'>
+                <label class='block text-gray-700 text-sm font-bold m-2'>Username</label>
+                <div class='shadow appearance-none border rounded text-gray-700 py-2 px-3 mr-10'> {{ user_form.username }}</div>
+            </div>
+            <div class='mb-3'>
+                <label class='block text-gray-700 text-sm font-bold m-2'>First name</label>
+                <div class='shadow appearance-none border rounded text-gray-700 py-2 px-3 mr-10'> {{ user_form.first_name }}</div>
+            </div>
+            <div class='mb-3'>
+                <label class='block text-gray-700 text-sm font-bold m-2'>Password</label>
+                <div class='shadow appearance-none border rounded text-gray-700 py-2 px-3 mr-10'> {{ user_form.password }}</div>
+            </div>
+            <div class='mb-3'>
+                <label class='block text-gray-700 text-sm font-bold m-2'>Confirm Password</label>
+                <div class='shadow appearance-none border rounded text-gray-700 py-2 px-3 mr-10'> {{ user_form.password2 }}</div>
+            </div>
+            
+
+            
+            <button type='submit' class='text-white bg-green-500 px-5 py-2'>Register</button>
+        </form>
+    </div>
     
+    <p class='px-10 py-10'>
+        <a class='text-indigo-500' href='{% url "password_reset" %}'>Forgot password? Click 👉 here to reset.</a>
+    </p>
 {% endblock %}
         
