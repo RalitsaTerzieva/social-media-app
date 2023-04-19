@@ -2,4 +2,9 @@
 
 {% block content %}
     <h1>Home page for users app</h1>
+    {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+        <h2>{{ post.user }}</h2>
+        <img src='{{ post.image.url }}'
+    {% endfor %}
 {% endblock %}

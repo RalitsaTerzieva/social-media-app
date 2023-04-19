@@ -108,6 +108,9 @@ venv.bak/
 # mkdocs documentation 
 /site 
 
+# node dependencies
+node_modules/
+
 # mypy 
 .mypy_cache/ 
 
