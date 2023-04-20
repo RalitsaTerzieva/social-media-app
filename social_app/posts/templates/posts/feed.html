@@ -32,5 +32,15 @@
             </a>
         {% endfor %}
        </div>
-    
+        <script type='text/javascript'>
+            window.CSRF_token = '{{ csrf_token }}'
+            $(document).on('click','.btn-like',function(){
+                const post_id = this.id
+                $.ajax({
+                    method:'POST',
+                    url:'/posts/like/',
+                    data:{post_id:post_id,csrfmiddlewaretoken:window.CSRF_token}
+                })
+            })
+        </script>
 {% endblock %}
